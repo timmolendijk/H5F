@@ -21,7 +21,8 @@ var H5F = H5F || {};
             validClass : "valid",
             invalidClass : "error",
             requiredClass : "required",
-            placeholderClass : "placeholder"
+            placeholderClass : "placeholder",
+            ignorePlaceholder : false
         };
 
         if(typeof settings === "object") {
@@ -103,7 +104,7 @@ var H5F = H5F || {};
             valid: (!missing && !patt && !step && !min && !max && !customError)
         };
         
-        if(attrs.placeholder && !evt.test(curEvt)) { placeholder(elem); }
+        if(!args.ignorePlaceholder && attrs.placeholder && !evt.test(curEvt)) { placeholder(elem); }
     };
     checkField = function (e) {
         var el = getTarget(e) || e, // checkValidity method passes element not event
